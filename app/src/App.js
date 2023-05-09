@@ -12,7 +12,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        <Route index element={<Home />} />
+        <Route index loader={countryLoader} element={<Home />} />
         <Route path="details" element={<Details />} />
       </Route>
     )
@@ -23,6 +23,13 @@ function App() {
       <RouterProvider router={router} />
     </div>
   );
+}
+
+// Loader functions
+
+export async function countryLoader() {
+  const res = await fetch("https://restcountries.com/v3.1/all");
+  return res.json();
 }
 
 export default App;
