@@ -20,7 +20,7 @@ export default function Home() {
       </div>
       <div>
         {countries.map((country, index) => (
-          <Link key={index} to="details">
+          <Link key={index} to={`details/${country.name.common}`}>
             <Card country={country} />
           </Link>
         ))}

@@ -13,7 +13,11 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
         <Route index loader={countryLoader} element={<Home />} />
-        <Route path="details" element={<Details />} />
+        <Route
+          path="/details/:name"
+          loader={detailsLoader}
+          element={<Details />}
+        />
       </Route>
     )
   );
@@ -29,6 +33,14 @@ function App() {
 
 export async function countryLoader() {
   const res = await fetch("https://restcountries.com/v3.1/all");
+  return res.json();
+}
+
+export async function detailsLoader({ params }) {
+  const { name } = params;
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${name}?fullText=true`
+  );
   return res.json();
 }
 

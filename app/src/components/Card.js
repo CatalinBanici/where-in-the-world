@@ -4,7 +4,10 @@ export default function Card({ country }) {
   return (
     <>
       <div>
-        <img src={country.flags.png} alt={`flag of ${country.name.common}`} />
+        <img
+          src={country.flags.png}
+          alt={country.flags.alt || `Flag of ${country.name.common}`}
+        />
       </div>
       <div>
         <h3>{country.name.common}</h3>
