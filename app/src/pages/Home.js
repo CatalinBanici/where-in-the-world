@@ -4,7 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 export default function Home() {
   const countries = useLoaderData();
-  console.log(countries);
+  // console.log(countries);
 
   return (
     <>
