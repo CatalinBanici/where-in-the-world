@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../components/Card";
 import { Link, useLoaderData } from "react-router-dom";
+import Filters from "../components/Filters";
 
 export default function Home() {
   const countries = useLoaderData();
@@ -9,14 +10,7 @@ export default function Home() {
   return (
     <>
       <div>
-        <input type="search" />
-        <select>
-          <option>Africa</option>
-          <option>America</option>
-          <option>Asia</option>
-          <option>Europe</option>
-          <option>Oceania</option>
-        </select>
+        <Filters />
       </div>
       <div>
         {countries.map((country, index) => (

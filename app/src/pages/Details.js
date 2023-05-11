@@ -1,37 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
-import Axios from "axios";
+import { useLoaderData, useNavigate } from "react-router-dom";
+
+import BorderButton from "../components/BorderButton";
 
 export default function Details() {
-  const [details, setDetails] = useState([]);
   const countryDetails = useLoaderData();
-  // const { name } = useParams();
-
-  // console.log(countryDetails);
-  // countryDetails[0].borders.map((b, i) => {
-  //   console.log(b);
-  // });
-
-  const borderString = countryDetails[0].borders.join(",");
-
-  useEffect(() => {
-    Axios.get(
-      `https://restcountries.com/v3.1/alpha?codes=${borderString}`
-    ).then((res) => {
-      setDetails(res.data);
-    });
-  }, [details]);
-
-  // console.log(borderString);
-  // console.log(details);
-  // details.map((e) => {
-  //   console.log(e.name.common);
-  // });
+  const navigate = useNavigate();
 
   return (
     <>
       <div>
-        <button>Back</button>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Back
+        </button>
       </div>
       <div>
         <div>
@@ -44,12 +28,54 @@ export default function Details() {
               }
             />
           </div>
+          <div>
+            <h2>{countryDetails[0].name.common}</h2>
+            <div>
+              <p>
+                <strong> Native Names: </strong>
+                {Object.values(countryDetails[0].name.nativeName).map(
+                  (item, index) => (
+                    <span key={index}>{item.common} </span>
+                  )
+                )}
+              </p>
+              <p>
+                <strong>Population: </strong>
+                {countryDetails[0].population}
+              </p>
+              <p>
+                <strong>Region: </strong>
+                {countryDetails[0].region}
+              </p>
+              <p>
+                <strong>Sub Region: </strong>
+                {countryDetails[0].subregion}
+              </p>
+              <p>
+                <strong>Capital: </strong>
+                {countryDetails[0].capital}
+              </p>
+              <p>
+                <strong>Top Level Domain: </strong>
+
+                {countryDetails[0].tld.map((item) => {
+                  return item;
+                })}
+              </p>
+              <p>
+                <strong>Currencies: </strong>
+                {Object.keys(countryDetails[0].currencies).join(", ")}
+              </p>
+              <p>
+                <strong>Languages: </strong>
+                {Object.values(countryDetails[0].languages).join(", ")}
+              </p>
+            </div>
+          </div>
         </div>
-        {details.map((detail, index) => (
-          <Link key={index} to={`../details/${detail.name?.common}`}>
-            <button>{detail.name?.common}</button>
-          </Link>
-        ))}
+        <div>
+          <BorderButton countryDetails={countryDetails} />
+        </div>
       </div>
     </>
   );
