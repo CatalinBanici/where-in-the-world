@@ -7,7 +7,7 @@ export default function Filters({ handleFilters }) {
 
   return (
     <>
-      <input type="search" />
+      <input type="search" onChange={handleFilterChange} />
 
       <select name="regionFilters" onChange={handleFilterChange}>
         <option defaultValue="" hidden>

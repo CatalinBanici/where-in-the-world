@@ -11,14 +11,13 @@ export default function BorderButton({ countryDetails }) {
     countryDetails[0].borders &&
       Axios.get(`https://restcountries.com/v3.1/alpha?codes=${borderString}`)
         .then((res) => {
-          if (borderData) {
-            setBorderData(res.data);
-          }
+          setBorderData(res.data);
         })
         .catch((err) => {
           console.log(err);
         });
-  }, [borderData, borderString, countryDetails]);
+    console.log("axios border useeffect ran");
+  }, [borderString]);
 
   return (
     <>

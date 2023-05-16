@@ -12,8 +12,8 @@ export default function Home() {
     setFilterType(filterValue);
   }
 
-  console.log("countries", countries);
-  console.log("filtered countries array", filteredCountries);
+  // console.log("countries", countries);
+  // console.log("filtered countries array", filteredCountries);
 
   useEffect(() => {
     switch (filterType) {
@@ -45,6 +45,7 @@ export default function Home() {
       default:
         setFilteredCountries(countries);
     }
+    console.log("useeffect filters ran");
   }, [filterType, countries]);
 
   return (
