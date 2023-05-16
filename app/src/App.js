@@ -7,27 +7,12 @@ import {
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
-import { useState } from "react";
 
 function App() {
-  const [filterType, setFilterType] = useState("");
-
-  function handleFilters(filterValue) {
-    setFilterType(filterValue);
-  }
-
-  console.log(filterType);
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        <Route
-          index
-          loader={countryLoader}
-          element={
-            <Home handleFilters={handleFilters} filterType={filterType} />
-          }
-        />
+        <Route index loader={countryLoader} element={<Home />} />
         <Route
           path="/details/:name"
           loader={detailsLoader}

@@ -10,7 +10,7 @@ export default function Filters({ handleFilters }) {
       <input type="search" />
 
       <select name="regionFilters" onChange={handleFilterChange}>
-        <option value="all" disabled selected hidden>
+        <option defaultValue="" hidden>
           Filter by Region
         </option>
         <option value="africa">Africa</option>

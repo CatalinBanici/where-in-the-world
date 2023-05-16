@@ -3,9 +3,14 @@ import Card from "../components/Card";
 import { Link, useLoaderData } from "react-router-dom";
 import Filters from "../components/Filters";
 
-export default function Home({ handleFilters, filterType }) {
+export default function Home() {
   const countries = useLoaderData();
   const [filteredCountries, setFilteredCountries] = useState(countries);
+  const [filterType, setFilterType] = useState("all");
+
+  function handleFilters(filterValue) {
+    setFilterType(filterValue);
+  }
 
   console.log("countries", countries);
   console.log("filtered countries array", filteredCountries);
@@ -19,7 +24,7 @@ export default function Home({ handleFilters, filterType }) {
         break;
       case "america":
         setFilteredCountries(
-          countries.filter((country) => country.region === "America")
+          countries.filter((country) => country.region === "Americas")
         );
         break;
       case "asia":
@@ -37,6 +42,8 @@ export default function Home({ handleFilters, filterType }) {
           countries.filter((country) => country.region === "Oceania")
         );
         break;
+      default:
+        setFilteredCountries(countries);
     }
   }, [filterType, countries]);
 
