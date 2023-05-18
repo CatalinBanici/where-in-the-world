@@ -8,12 +8,20 @@ export default function Home() {
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [filterType, setFilterType] = useState("all");
 
-  function handleFilters(filterValue) {
+  // console.log("countries", countries);
+  // console.log("filtered countries array", filteredCountries);
+
+  function handleSelectFilters(filterValue) {
     setFilterType(filterValue);
   }
 
-  // console.log("countries", countries);
-  // console.log("filtered countries array", filteredCountries);
+  function handleSearchFilter(inputValue) {
+    setFilteredCountries(
+      countries.filter((country) =>
+        country.name.common.toLowerCase().includes(inputValue.toLowerCase())
+      )
+    );
+  }
 
   useEffect(() => {
     switch (filterType) {
@@ -51,7 +59,10 @@ export default function Home() {
   return (
     <>
       <div>
-        <Filters handleFilters={handleFilters} />
+        <Filters
+          handleSelectFilters={handleSelectFilters}
+          handleSearchFilter={handleSearchFilter}
+        />
       </div>
       <div>
         {filteredCountries.map((country, index) => (

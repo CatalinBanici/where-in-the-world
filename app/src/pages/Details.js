@@ -21,7 +21,7 @@ export default function Details() {
         <div>
           <div>
             <img
-              src={countryDetails[0].flags.png}
+              src={countryDetails[0].flags?.png}
               alt={
                 countryDetails[0].flags.alt ||
                 `Flag of ${countryDetails[0].name.common}`
@@ -29,11 +29,11 @@ export default function Details() {
             />
           </div>
           <div>
-            <h2>{countryDetails[0].name.common}</h2>
+            <h2>{countryDetails[0].name?.common}</h2>
             <div>
               <p>
                 <strong> Native Names: </strong>
-                {Object.values(countryDetails[0].name.nativeName).map(
+                {Object.values(countryDetails[0].name?.nativeName).map(
                   (item, index) => (
                     <span key={index}>{item.common} </span>
                   )
@@ -41,7 +41,9 @@ export default function Details() {
               </p>
               <p>
                 <strong>Population: </strong>
-                {countryDetails[0].population}
+                {countryDetails[0].population
+                  .toString()
+                  .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}
               </p>
               <p>
                 <strong>Region: </strong>

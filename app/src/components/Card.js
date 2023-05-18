@@ -11,7 +11,12 @@ export default function Card({ country }) {
       </div>
       <div>
         <h3>{country.name.common}</h3>
-        <p>Population: {country.population}</p>
+        <p>
+          Population:{" "}
+          {country.population
+            .toString()
+            .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}
+        </p>
         <p>Region: {country.region}</p>
         <p>Capital: {country.capital}</p>
       </div>
