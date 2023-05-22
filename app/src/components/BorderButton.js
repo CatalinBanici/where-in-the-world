@@ -4,6 +4,7 @@ import Axios from "axios";
 
 export default function BorderButton({ countryDetails }) {
   const [borderData, setBorderData] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const borderString = countryDetails[0].borders?.join(",");
 
@@ -15,6 +16,7 @@ export default function BorderButton({ countryDetails }) {
         })
         .catch((err) => {
           console.log(err);
+          setErrorMsg(err.message);
         });
     console.log("axios border useeffect ran");
   }, [borderString]);
@@ -24,15 +26,19 @@ export default function BorderButton({ countryDetails }) {
       <p>
         <strong>Border Countries: </strong>
       </p>
-      <span>
-        {borderData.length > 0
-          ? borderData.map((item, index) => (
-              <Link key={index} to={`../details/${item.name?.common}`}>
-                <button>{item.name?.common}</button>
-              </Link>
-            ))
-          : "No Borders"}
-      </span>
+      {errorMsg ? (
+        <span>{errorMsg}. Failed to get data from border details.</span>
+      ) : (
+        <span>
+          {borderData.length > 0
+            ? borderData.map((item, index) => (
+                <Link key={index} to={`../details/${item.name?.common}`}>
+                  <button>{item.name?.common}</button>
+                </Link>
+              ))
+            : "No Borders"}
+        </span>
+      )}
     </>
   );
 }
