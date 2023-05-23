@@ -27,9 +27,9 @@ export default function BorderButton({ countryDetails }) {
         <strong>Border Countries: </strong>
       </p>
       {errorMsg ? (
-        <span>{errorMsg}. Failed to get data from border details.</span>
+        <div>{errorMsg}. Failed to get data from border details.</div>
       ) : (
-        <span>
+        <div>
           {borderData.length > 0
             ? borderData.map((item, index) => (
                 <Link key={index} to={`../details/${item.name?.common}`}>
@@ -37,7 +37,7 @@ export default function BorderButton({ countryDetails }) {
                 </Link>
               ))
             : "No Borders"}
-        </span>
+        </div>
       )}
     </>
   );
