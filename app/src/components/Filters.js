@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 
 export default function Filters({ handleSelectFilters, handleSearchFilter }) {
   const [searchInput, setSearchInput] = useState("");
@@ -16,14 +17,19 @@ export default function Filters({ handleSelectFilters, handleSearchFilter }) {
 
   return (
     <>
-      <input
-        type="search"
-        placeholder="Search for a country..."
-        value={searchInput}
-        onChange={(e) => {
-          setSearchInput(e.target.value);
-        }}
-      />
+      <div className="search-input-container">
+        <span>
+          <AiOutlineSearch />
+        </span>
+        <input
+          type="search"
+          placeholder="Search for a country..."
+          value={searchInput}
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+          }}
+        />
+      </div>
 
       <select name="regionFilters" onChange={handleFilterChange}>
         <option defaultValue="all" hidden>

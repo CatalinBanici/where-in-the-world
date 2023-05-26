@@ -58,15 +58,19 @@ export default function Home() {
 
   return (
     <>
-      <div>
+      <div className="filter-container">
         <Filters
           handleSelectFilters={handleSelectFilters}
           handleSearchFilter={handleSearchFilter}
         />
       </div>
-      <div>
+      <div className="card-container">
         {filteredCountries.map((country, index) => (
-          <Link key={index} to={`details/${country.name.common}`}>
+          <Link
+            className="link-card"
+            key={index}
+            to={`details/${country.name.common}`}
+          >
             <Card country={country} />
           </Link>
         ))}

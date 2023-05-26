@@ -3,13 +3,13 @@ import React from "react";
 export default function Card({ country }) {
   return (
     <>
-      <div>
+      <div className="flag-container">
         <img
           src={country.flags.png}
           alt={country.flags.alt || `Flag of ${country.name.common}`}
         />
       </div>
-      <div>
+      <div className="details-container">
         <h3>{country.name.common}</h3>
         <p>
           Population:{" "}

@@ -9,11 +9,18 @@ import Home from "./pages/Home";
 import Details from "./pages/Details";
 import NotFound from "./pages/NotFound";
 import ErrorComponent from "./components/ErrorComponent";
+import { useState } from "react";
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Root />} errorElement={<ErrorComponent />}>
+      <Route
+        path="/"
+        element={<Root theme={theme} setTheme={setTheme} />}
+        errorElement={<ErrorComponent />}
+      >
         <Route index loader={countryLoader} element={<Home />} />
         <Route
           path="/details/:name"
@@ -26,8 +33,10 @@ function App() {
   );
 
   return (
-    <div className="App">
-      <RouterProvider router={router} />
+    <div className="app" data-theme={theme}>
+      <div className="app-container">
+        <RouterProvider router={router} />
+      </div>
     </div>
   );
 }
