@@ -8,7 +8,7 @@
   --Elements: hsl(209, 23%, 22%);
   --Shadow: hsl(209, 34%, 14%);
   --Text: hsl(0, 0%, 100%);
-  --Input: hsl(0, 0%, 100%);
+  --Input: hsl(0, 2%, 76%);
 }
 
 [data-theme="light"] {
@@ -25,15 +25,8 @@
   box-sizing: border-box;
 }
 
-html {
-  min-height: 100vh;
-}
-
-body {
-  font-family: "Nunito Sans";
-}
-
 .app {
+  font-family: "Nunito Sans";
   min-height: 100vh;
   background-color: var(--Background);
   width: 100%;
@@ -46,6 +39,7 @@ body {
   width: 1440px;
   display: flex;
   flex-direction: column;
+  padding-bottom: 150px;
 }
 
 /* ===== HEADER ===== */
@@ -95,6 +89,9 @@ header button svg {
 main {
   position: relative;
   top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* filter container */
@@ -118,6 +115,7 @@ main {
   flex-direction: row;
   align-items: center;
   box-shadow: 0 0 20px 5px var(--Shadow);
+  border-radius: 5px;
 }
 
 .search-input-container span {
@@ -153,7 +151,8 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 40px;
+  gap: 30px;
+  width: 95%;
 }
 
 .link-card {
@@ -161,7 +160,7 @@ main {
   flex-direction: column;
   background-color: var(--Elements);
   width: 300px;
-  height: 350px;
+  height: 400px;
   text-decoration: none;
   color: var(--Text);
   line-height: 1.7em;
