@@ -1,8 +1,3 @@
-@font-face {
-  font-family: "Nunito Sans";
-  src: url(./NunitoSans_7pt-Medium.ttf);
-}
-
 :root {
   --Background: hsl(207, 26%, 17%);
   --Elements: hsl(209, 23%, 22%);
@@ -94,7 +89,7 @@ main {
   align-items: center;
 }
 
-/* filter container */
+/* FILTER CONTAINER */
 
 .filter-container {
   padding: 25px 50px;
@@ -107,6 +102,7 @@ main {
   justify-content: space-between;
 }
 
+/* search */
 .search-input-container {
   background-color: var(--Elements);
   height: 100%;
@@ -145,7 +141,47 @@ main {
   color: var(--Input);
 }
 
-/* card container */
+/* select */
+.select-input-container {
+  position: relative;
+  display: flex;
+  width: 170px;
+  height: 100%;
+  box-shadow: 0 0 20px 5px var(--Shadow);
+}
+
+.select-input-container select {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  padding: 15px;
+  background-color: var(--Elements);
+  color: var(--Text);
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.select-input-container span {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--Text);
+}
+
+/* CARD CONTAINER */
 
 .card-container {
   display: flex;

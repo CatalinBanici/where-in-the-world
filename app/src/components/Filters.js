@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { AiFillCaretDown } from "react-icons/ai";
 
 export default function Filters({ handleSelectFilters, handleSearchFilter }) {
   const [searchInput, setSearchInput] = useState("");
@@ -30,18 +31,22 @@ export default function Filters({ handleSelectFilters, handleSearchFilter }) {
           }}
         />
       </div>
-
-      <select name="regionFilters" onChange={handleFilterChange}>
-        <option defaultValue="all" hidden>
-          Filter by Region
-        </option>
-        <option value="africa">Africa</option>
-        <option value="america">America</option>
-        <option value="asia">Asia</option>
-        <option value="europe">Europe</option>
-        <option value="oceania">Oceania</option>
-        <option value="all">All</option>
-      </select>
+      <div className="select-input-container">
+        <select name="regionFilters" onChange={handleFilterChange}>
+          <option defaultValue="all" hidden>
+            Filter by Region
+          </option>
+          <option value="africa">Africa</option>
+          <option value="america">America</option>
+          <option value="asia">Asia</option>
+          <option value="europe">Europe</option>
+          <option value="oceania">Oceania</option>
+          <option value="all">All</option>
+        </select>
+        <span>
+          <AiFillCaretDown />
+        </span>
+      </div>
     </>
   );
 }

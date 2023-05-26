@@ -68,6 +68,7 @@ export default function Home() {
         {filteredCountries.map((country, index) => (
           <Link
             className="link-card"
+            title="Click to view more details"
             key={index}
             to={`details/${country.name.common}`}
           >
