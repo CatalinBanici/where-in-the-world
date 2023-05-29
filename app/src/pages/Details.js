@@ -2,23 +2,30 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 
 import BorderButton from "../components/BorderButton";
 
+import { IoIosArrowRoundBack } from "react-icons/io";
+
 export default function Details() {
   const countryDetails = useLoaderData();
   const navigate = useNavigate();
 
+  const nativeName = Object.values(countryDetails[0]?.name?.nativeName).pop();
+
   return (
-    <>
-      <div>
+    <div className="details-page">
+      <div className="back-button-container">
         <button
           onClick={() => {
             navigate("/");
           }}
         >
+          <span>
+            <IoIosArrowRoundBack />
+          </span>
           Back
         </button>
       </div>
-      <div>
-        <div>
+      <div className="extra-details-container">
+        <div className="flag">
           <img
             src={countryDetails[0].flags?.png}
             alt={
@@ -27,56 +34,51 @@ export default function Details() {
             }
           />
         </div>
-        <div>
-          <h2>{countryDetails[0].name?.common}</h2>
-          <div>
+        <div className="details">
+          <h2>{countryDetails[0]?.name?.common}</h2>
+          <div className="details-wrapper">
             <p>
               <strong> Native Names: </strong>
-              {Object.values(countryDetails[0].name?.nativeName).map(
-                (item, index) => (
-                  <span key={index}>{item.common} </span>
-                )
-              )}
+              {Object.values(nativeName?.common)}
             </p>
             <p>
               <strong>Population: </strong>
-              {countryDetails[0].population
+              {countryDetails[0]?.population
                 .toString()
                 .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}
             </p>
             <p>
               <strong>Region: </strong>
-              {countryDetails[0].region}
+              {countryDetails[0]?.region}
             </p>
             <p>
               <strong>Sub Region: </strong>
-              {countryDetails[0].subregion}
+              {countryDetails[0]?.subregion}
             </p>
             <p>
               <strong>Capital: </strong>
-              {countryDetails[0].capital}
+              {countryDetails[0]?.capital}
             </p>
             <p>
               <strong>Top Level Domain: </strong>
-
-              {countryDetails[0].tld.map((item) => {
+              {countryDetails[0]?.tld?.map((item) => {
                 return item;
-              })}
+              }) || "none"}
             </p>
             <p>
               <strong>Currencies: </strong>
-              {Object.keys(countryDetails[0].currencies).join(", ")}
+              {Object.keys(countryDetails[0]?.currencies).join(", ")}
             </p>
             <p>
               <strong>Languages: </strong>
-              {Object.values(countryDetails[0].languages).join(", ")}
+              {Object.values(countryDetails[0]?.languages).join(", ")}
             </p>
           </div>
-          <div>
+          <div className="border-wrapper">
             <BorderButton countryDetails={countryDetails} />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

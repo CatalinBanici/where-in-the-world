@@ -33,6 +33,7 @@
 .app-container {
   width: 1440px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   padding-bottom: 150px;
 }
@@ -84,6 +85,7 @@ header button svg {
 main {
   position: relative;
   top: 75px;
+  width: 93%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +94,7 @@ main {
 /* FILTER CONTAINER */
 
 .filter-container {
-  padding: 25px 50px;
+  padding-block: 25px;
   margin-block: 20px;
   width: 100%;
   height: 100px;
@@ -187,8 +189,9 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 30px;
-  width: 95%;
+  align-items: center;
+  gap: 30px 40px;
+  width: 100%;
 }
 
 .link-card {
@@ -227,4 +230,126 @@ main {
 
 .details-container h3 {
   padding-block: 10px;
+}
+
+/* DETAILS PAGE */
+
+.details-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* back button */
+.back-button-container {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.back-button-container span {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.back-button-container span svg {
+  font-size: 25px;
+}
+
+.back-button-container button {
+  border: none;
+  background-color: var(--Elements);
+  color: var(--Text);
+  width: 110px;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 0 20px 5px var(--Shadow);
+  border-radius: 6px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.back-button-container button:hover {
+  opacity: 70%;
+}
+
+.back-button-container button:active {
+  opacity: 50%;
+}
+
+/* details container */
+.extra-details-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flag {
+  width: 50%;
+}
+
+.flag img {
+  height: 85%;
+  width: 85%;
+  object-fit: contain;
+  object-position: left;
+}
+
+.details {
+  width: 50%;
+  color: var(--Text);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.details-wrapper {
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  line-height: 30px;
+}
+
+.border-wrapper div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-block: 10px;
+}
+
+.border-wrapper div a button {
+  margin: 5px;
+  border: none;
+  background-color: var(--Elements);
+  color: var(--Text);
+  min-width: 80px;
+  padding: 10px 10px;
+  box-shadow: 0 0 20px 5px var(--Shadow);
+  border-radius: 6px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.border-wrapper div a button:hover {
+  opacity: 70%;
+}
+
+.border-wrapper div a button:active {
+  opacity: 50%;
 }
