@@ -301,7 +301,7 @@ main {
 
 .flag img {
   height: 85%;
-  width: 85%;
+  box-shadow: 0 0 20px 5px var(--Shadow);
   object-fit: contain;
   object-position: left;
 }
