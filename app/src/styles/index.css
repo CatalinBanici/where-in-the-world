@@ -143,6 +143,10 @@ main {
   color: var(--Input);
 }
 
+.total-container {
+  color: var(--Text);
+}
+
 /* select */
 
 .select-wrapper {

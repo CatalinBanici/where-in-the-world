@@ -6,6 +6,7 @@ export default function Filters({
   handleSelectFilters,
   handleSearchFilter,
   handleSortFilters,
+  filteredCountries,
 }) {
   const [searchInput, setSearchInput] = useState("");
 
@@ -38,6 +39,10 @@ export default function Filters({
             setSearchInput(e.target.value);
           }}
         />
+      </div>
+
+      <div className="total-container">
+        <h3>Total countries: {filteredCountries.length}</h3>
       </div>
 
       <div className="select-wrapper">

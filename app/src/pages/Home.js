@@ -104,7 +104,7 @@ export default function Home() {
       default:
         setFilteredCountries(countries);
     }
-    console.log("useeffect filters ran");
+    console.log("filters effect ran");
   }, [filterType]);
 
   return (
@@ -114,6 +114,7 @@ export default function Home() {
           handleSelectFilters={handleSelectFilters}
           handleSearchFilter={handleSearchFilter}
           handleSortFilters={handleSortFilters}
+          filteredCountries={filteredCountries}
         />
       </div>
       <div className="card-container">
