@@ -308,7 +308,7 @@ main {
 }
 
 .flag img {
-  height: 85%;
+  width: 85%;
   box-shadow: 0 0 20px 5px var(--Shadow);
   object-fit: contain;
   object-position: left;
@@ -360,4 +360,21 @@ main {
 
 .border-wrapper div a button:active {
   opacity: 50%;
+}
+
+/* ERROR COMPONENTS */
+
+.error-page {
+  min-height: 100vh;
+  background-color: var(--Background);
+  padding: 100px;
+  color: var(--Text);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.error-page p a {
+  color: var(--Text);
 }

@@ -5,7 +5,7 @@ export default function ErrorComponent() {
   const error = useRouteError();
   console.log(error);
   return (
-    <div>
+    <div className="error-page">
       <h2>Error</h2>
       <p>{error.message}</p>
       <p>

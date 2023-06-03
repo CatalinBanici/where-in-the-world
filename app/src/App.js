@@ -37,7 +37,9 @@ function App() {
 export async function countryLoader() {
   const res = await fetch("https://restcountries.com/v3.1/all");
   if (!res.ok) {
-    throw Error("Could not get data");
+    throw Error(
+      "Could not get app data! Server offline or API broken. Try again later!"
+    );
   }
   return res.json();
 }
@@ -48,7 +50,9 @@ export async function detailsLoader({ params }) {
     `https://restcountries.com/v3.1/name/${name}?fullText=true`
   );
   if (!res.ok) {
-    throw Error("Could not get data from that country");
+    throw Error(
+      "Could not get data for that country! Server offline or API broken. Try again later!"
+    );
   }
   return res.json();
 }
