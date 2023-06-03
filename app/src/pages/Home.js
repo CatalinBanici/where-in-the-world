@@ -7,18 +7,7 @@ export default function Home() {
   const countries = useLoaderData();
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [filterType, setFilterType] = useState("all");
-
   const [sortType, setSortType] = useState("none");
-  // const [sortedCountries, setSortedCountries] = useState(filteredCountries);
-
-  // let popToSort = filteredCountries.map((e) => e.population);
-  // popToSort.sort((a, b) => {
-  //   return a - b;
-  // });
-  // console.log(popToSort);
-
-  // console.log("countries", countries);
-  // console.log("filtered countries array", filteredCountries);
 
   function handleSelectFilters(filterValue) {
     setFilterType(filterValue);
@@ -37,32 +26,45 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // const popToSort = filteredCountries.map((e) => e);
+    const filteredCountriesObj = [...filteredCountries];
 
     switch (sortType) {
       case "pop+":
         setFilteredCountries(
-          filteredCountries.sort((a, b) => {
+          filteredCountriesObj.sort((a, b) => {
             return a.population - b.population;
           })
         );
         break;
       case "pop-":
         setFilteredCountries(
-          filteredCountries.sort((a, b) => {
+          filteredCountriesObj.sort((a, b) => {
             return b.population - a.population;
           })
         );
         break;
 
-      // case "name+":
-      //   setFilteredCountries(
+      case "name+":
+        setFilteredCountries(
+          filteredCountriesObj.sort((a, b) => {
+            if (a.name.common.toLowerCase() < b.name.common.toLowerCase()) {
+              return -1;
+            }
+            return null;
+          })
+        );
+        break;
+      case "name-":
+        setFilteredCountries(
+          filteredCountriesObj.sort((a, b) => {
+            if (a.name.common.toLowerCase() > b.name.common.toLowerCase()) {
+              return -1;
+            }
+            return null;
+          })
+        );
+        break;
 
-      //   );
-      //   break;
-      // case "name-":
-      //   setFilteredCountries(filteredCountries.sort());
-      //   break;
       default:
         setFilteredCountries(countries);
     }
@@ -70,34 +72,33 @@ export default function Home() {
     console.log("sort effect ran");
   }, [sortType]);
 
-  // console.log("sortedCountries is", sortedCountries);
-  console.log(filteredCountries);
-
   useEffect(() => {
+    const countryObj = [...countries];
+
     switch (filterType) {
       case "africa":
         setFilteredCountries(
-          countries.filter((country) => country.region === "Africa")
+          countryObj.filter((country) => country.region === "Africa")
         );
         break;
       case "america":
         setFilteredCountries(
-          countries.filter((country) => country.region === "Americas")
+          countryObj.filter((country) => country.region === "Americas")
         );
         break;
       case "asia":
         setFilteredCountries(
-          countries.filter((country) => country.region === "Asia")
+          countryObj.filter((country) => country.region === "Asia")
         );
         break;
       case "europe":
         setFilteredCountries(
-          countries.filter((country) => country.region === "Europe")
+          countryObj.filter((country) => country.region === "Europe")
         );
         break;
       case "oceania":
         setFilteredCountries(
-          countries.filter((country) => country.region === "Oceania")
+          countryObj.filter((country) => country.region === "Oceania")
         );
         break;
       default:

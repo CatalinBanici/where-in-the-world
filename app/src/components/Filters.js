@@ -46,10 +46,10 @@ export default function Filters({
             <option defaultValue="none" hidden>
               Sort by...
             </option>
-            <option value="pop+">Population Ascending</option>
-            <option value="pop-">Population Descending</option>
-            <option value="name+">Name +</option>
-            <option value="name-">Name -</option>
+            <option value="pop+">Population 0 - 9</option>
+            <option value="pop-">Population 9 - 0</option>
+            <option value="name+">Name A - Z</option>
+            <option value="name-">Name Z - A</option>
             <option value="none">None</option>
           </select>
           <span>
