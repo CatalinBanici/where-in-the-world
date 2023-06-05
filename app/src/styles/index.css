@@ -57,6 +57,8 @@ header {
 
 header h1 {
   color: var(--Text);
+  font-size: min(5vw, 32px);
+  margin-right: 15px;
 }
 
 header button {
@@ -97,7 +99,6 @@ main {
   padding-block: 25px;
   margin-block: 20px;
   width: 100%;
-  height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -108,7 +109,8 @@ main {
 .search-input-container {
   background-color: var(--Elements);
   height: 100%;
-  width: 400px;
+  width: min(82vw, 400px);
+  height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -210,7 +212,7 @@ main {
   display: flex;
   flex-direction: column;
   background-color: var(--Elements);
-  width: 300px;
+  width: min(90vw, 300px);
   height: 400px;
   text-decoration: none;
   color: var(--Text);
@@ -328,13 +330,21 @@ main {
 }
 
 .details-wrapper {
-  height: 175px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
   line-height: 30px;
+}
+
+.google-maps {
+  color: var(--Text);
+}
+
+.google-maps p a {
+  color: var(--Text);
 }
 
 .border-wrapper div {
@@ -381,4 +391,66 @@ main {
 
 .error-page p a {
   color: var(--Text);
+}
+
+@media (max-width: 1100px) {
+  /* remove hover effects */
+  .link-card:hover {
+    transform: none;
+  }
+
+  header button:hover {
+    opacity: unset;
+  }
+
+  .back-button-container button:hover {
+    opacity: unset;
+  }
+
+  .border-wrapper div a button:hover {
+    opacity: unset;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .extra-details-container {
+    flex-direction: column;
+  }
+
+  .flag img {
+    width: min(80vw, 300px);
+  }
+
+  .flag {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .details {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .details-wrapper {
+    flex-wrap: nowrap;
+    height: auto;
+  }
+}
+
+@media (max-width: 440px) {
+  .select-wrapper {
+    flex-direction: column;
+    align-self: flex-start;
+  }
 }

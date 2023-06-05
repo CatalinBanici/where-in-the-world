@@ -25,7 +25,7 @@ export default function Home() {
     );
   }
 
-  useEffect(() => {
+  function handleSorting() {
     const filteredCountriesObj = [...filteredCountries];
 
     switch (sortType) {
@@ -68,11 +68,9 @@ export default function Home() {
       default:
         setFilteredCountries(countries);
     }
+  }
 
-    console.log("sort effect ran");
-  }, [sortType]);
-
-  useEffect(() => {
+  function handleRegionFilters() {
     const countryObj = [...countries];
 
     switch (filterType) {
@@ -104,6 +102,15 @@ export default function Home() {
       default:
         setFilteredCountries(countries);
     }
+  }
+
+  useEffect(() => {
+    handleSorting();
+    console.log("sort effect ran");
+  }, [sortType]);
+
+  useEffect(() => {
+    handleRegionFilters();
     console.log("filters effect ran");
   }, [filterType]);
 

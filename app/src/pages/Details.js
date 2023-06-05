@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 
 import BorderButton from "../components/BorderButton";
 
@@ -8,7 +8,9 @@ export default function Details() {
   const countryDetails = useLoaderData();
   const navigate = useNavigate();
 
-  const nativeName = Object.values(countryDetails[0]?.name?.nativeName).pop();
+  const nativeName = Object.values(countryDetails[0].name?.nativeName).pop();
+
+  console.log(countryDetails);
 
   return (
     <div className="details-page">
@@ -35,7 +37,7 @@ export default function Details() {
           />
         </div>
         <div className="details">
-          <h2>{countryDetails[0]?.name?.common}</h2>
+          <h2>{countryDetails[0].name?.common}</h2>
           <div className="details-wrapper">
             <p>
               <strong> Native Names: </strong>
@@ -43,35 +45,44 @@ export default function Details() {
             </p>
             <p>
               <strong>Population: </strong>
-              {countryDetails[0]?.population
+              {countryDetails[0].population
                 .toString()
                 .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}
             </p>
             <p>
               <strong>Region: </strong>
-              {countryDetails[0]?.region}
+              {countryDetails[0].region}
             </p>
             <p>
               <strong>Sub Region: </strong>
-              {countryDetails[0]?.subregion}
+              {countryDetails[0].subregion}
             </p>
             <p>
               <strong>Capital: </strong>
-              {countryDetails[0]?.capital}
+              {countryDetails[0].capital}
             </p>
+            <br />
             <p>
               <strong>Top Level Domain: </strong>
-              {countryDetails[0]?.tld?.map((item) => {
+              {countryDetails[0].tld?.map((item) => {
                 return item;
               }) || "none"}
             </p>
             <p>
               <strong>Currencies: </strong>
-              {Object.keys(countryDetails[0]?.currencies).join(", ")}
+              {Object.keys(countryDetails[0].currencies).join(", ")}
             </p>
             <p>
               <strong>Languages: </strong>
-              {Object.values(countryDetails[0]?.languages).join(", ")}
+              {Object.values(countryDetails[0].languages).join(", ")}
+            </p>
+          </div>
+          <div className="google-maps">
+            <p>
+              View on{" "}
+              <Link target="blank" to={countryDetails[0].maps?.googleMaps}>
+                Google Maps
+              </Link>
             </p>
           </div>
           <div className="border-wrapper">
