@@ -10,8 +10,6 @@ export default function Details() {
 
   const nativeName = Object.values(countryDetails[0].name?.nativeName).pop();
 
-  console.log(countryDetails);
-
   return (
     <div className="details-page">
       <div className="back-button-container">
